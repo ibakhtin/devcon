@@ -1,0 +1,31 @@
+{
+  "name": "devcon",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": "https://github.com/ibakhtin/devcon.git",
+  "author": "Igor Bakhtin <ibakhtin@icloud.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "npx babel src --out-dir dist",
+    "start": "npx babel-node src/index.js",
+    "serve": "nodemon --delay 5 --watch src --exec babel-node src/index.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "config": "^3.2.2",
+    "express": "^4.17.1",
+    "express-validator": "^6.1.1",
+    "gravatar": "^1.8.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.6.11",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "concurrently": "^4.1.2",
+    "nodemon": "^1.19.1"
+  }
+}

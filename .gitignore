@@ -86,3 +86,9 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
+
+# Yarn lock file
+yarn.lock
+
+# Babel output directory
+dist/
