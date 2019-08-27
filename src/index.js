@@ -1,9 +1,14 @@
-import express from "express";
+import express from 'express'
 
-const app = express();
+import connectDatabase from './connectDatabase'
+
+const app = express()
+
+// Connect Database
+connectDatabase()
 
 app.get('/', (req, res) => res.send('API is running.'))
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000
 
-app.listen(PORT, () => console.log(`Server started on port ${PORT}.`));
+app.listen(PORT, () => console.log(`Server started on port ${PORT}.`))

@@ -92,3 +92,6 @@ yarn.lock
 
 # Babel output directory
 dist/
+
+# Config file with MongoDB password
+config/default.json
