@@ -1,11 +1,11 @@
 import config from "config";
 import mongoose from "mongoose";
 
-const mongoConnectionString = config.get("mongoConnectionString");
+const mongoDbConnectionString = config.get("mongoDbConnectionString");
 
 const connectDatabase = async () => {
   try {
-    await mongoose.connect(mongoConnectionString, {useNewUrlParser: true});
+    await mongoose.connect(mongoDbConnectionString, {useNewUrlParser: true});
     console.log("MongoDB connected.")
   } catch (error) {
     console.error(error.message)
