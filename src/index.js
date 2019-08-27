@@ -1,6 +1,6 @@
 import express from 'express'
 
-import connectDatabase from './connectDatabase'
+import connectDatabase from './utils/connectDatabase'
 
 import authRouter from './routes/api/auth'
 import postsRouter from './routes/api/posts'
