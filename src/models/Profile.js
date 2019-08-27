@@ -104,6 +104,6 @@ const ProfileSchema = new mongoose.Schema({
   }
 })
 
-const Profile = mongoose.model(ProfileSchema)
+const Profile = mongoose.model('profile', ProfileSchema)
 
 export default Profile
