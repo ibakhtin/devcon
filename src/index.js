@@ -4,7 +4,7 @@ import connectDatabase from './utils/connectDatabase'
 
 import authRouter from './routes/api/auth'
 import postsRouter from './routes/api/posts'
-import profilesRouter from './routes/api/profiles'
+import profileRouter from './routes/api/profile'
 import usersRouter from './routes/api/users'
 
 const app = express()
@@ -20,7 +20,7 @@ app.get('/', (req, res) => res.send('API is running.'))
 // Define routes
 app.use('/api/auth', authRouter)
 app.use('/api/posts', postsRouter)
-app.use('/api/profiles', profilesRouter)
+app.use('/api/profile', profileRouter)
 app.use('/api/users', usersRouter)
 
 

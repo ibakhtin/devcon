@@ -9,7 +9,8 @@ const connectDatabase = async () => {
       mongoDbConnectionString, 
       {
         useNewUrlParser: true, 
-        useCreateIndex: true 
+        useCreateIndex: true,
+        useFindAndModify: false
       }
     )
     console.log('MongoDB connected.')

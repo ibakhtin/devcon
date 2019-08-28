@@ -11,7 +11,7 @@ const router = express.Router();
 
 // @route GET api/auth
 // @desc Test route
-// @access private
+// @access Private
 router.get(
   '/', 
   auth, 
@@ -28,7 +28,7 @@ router.get(
 
 // @route POST api/auth
 // @desc Athenticate user and get token
-// @access public
+// @access Public
 router.post(
   '/',
   [
@@ -36,7 +36,9 @@ router.post(
     check('password', 'Password is required').exists()
   ],
   async (req, res) => {
+    
     const errors = validationResult(req)
+
     if (!errors.isEmpty()) {
       res.status(400).json({ errors: errors.array() })
       return

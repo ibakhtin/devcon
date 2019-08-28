@@ -11,7 +11,7 @@ const router = express.Router()
 
 // @route POST api/users
 // @desc Register user
-// @access public
+// @access Public
 router.post(
   '/',
   [
@@ -22,9 +22,10 @@ router.post(
     check('password', 'Please enter a password with 6 or more characters').isLength({ min: 6 })
   ],
   async (req, res) => {
-    const errors = validationResult(req)
-    if (!errors.isEmpty()) {
-      res.status(400).json({ errors: errors.array() })
+    const result = validationResult(req)
+
+    if (!result.isEmpty()) {
+      res.status(400).json({ errors: result.array() })
       return
     }
 
