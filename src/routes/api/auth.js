@@ -27,7 +27,7 @@ router.get(
 )
 
 // @route POST api/auth
-// @desc Athenticate user and get token
+// @desc Login user
 // @access Public
 router.post(
   '/',
