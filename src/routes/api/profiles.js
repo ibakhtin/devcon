@@ -3,6 +3,7 @@ import { check, validationResult } from 'express-validator'
 
 import auth from '../../middleware/auth'
 import Profile from '../../models/Profile'
+import User from '../../models/User'
 
 const router = express.Router()
 
@@ -113,7 +114,7 @@ router.post(
 // @access Public
 router.get('/', async (req, res) => {
   try {
-    const profiles = await Profile.find().populate('user', ['name', 'avatar'])
+    const profiles = await Profile.find().populate('user', ['name', 'email', 'avatar'])
     res.json(profiles)
   } catch (error) {
     console.error(error.message)
@@ -139,7 +140,7 @@ router.get('/user/:user_id', async (req, res) => {
     res.json(profile)
   } catch (error) {
     console.error(error.message)
-    
+
     if (error.kind == 'ObjectId') {
       res.status(400).json({ msg: 'Profile not found' })
       return
@@ -147,5 +148,22 @@ router.get('/user/:user_id', async (req, res) => {
     res.status(500).send('Server error')
   }
 })
+
+// @route DELETE api/profiles/:user_id
+// @desc Get all profiles
+// @access Private
+router.delete('/', auth, async (req, res) => {
+  try {
+    await Profile.findOneAndRemove({ user: req.user.id })
+    await User.findOneAndRemove({ user: req.user.id })
+    // @TODO remove posts
+    res.json({ msg: 'User removed' })
+  } catch (error) {
+    console.error(error.message)
+    res.status(500).send('Server error')
+  }
+})
+
+
 
 export default router
