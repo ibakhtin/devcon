@@ -37,12 +37,8 @@ router.post(
   [
     auth,
     [
-      check('status', 'Status is required')
-        .not()
-        .isEmpty(),
-      check('skills', 'Skills is required')
-        .not()
-        .isEmpty()
+      check('status', 'Status is required').not().isEmpty(),
+      check('skills', 'Skills is required').not().isEmpty()
     ]
   ],
   async (req, res) => {
@@ -149,7 +145,7 @@ router.get('/user/:user_id', async (req, res) => {
   }
 })
 
-// @route DELETE api/profiles/:user_id
+// @route DELETE api/profiles
 // @desc Get all profiles
 // @access Private
 router.delete('/', auth, async (req, res) => {
@@ -164,6 +160,56 @@ router.delete('/', auth, async (req, res) => {
   }
 })
 
+// @route PUT api/profiles/experience
+// @desc Add profile experience
+// @access Private
+router.put(
+  '/experience',
+  [
+    auth, 
+    [
+      check('title', 'Title is required').not().isEmpty(),
+      check('company', 'Company is required').not().isEmpty(),
+      check('from', 'From date is required').not().isEmpty()
+    ]
+  ],
+  async (req, res) => {
+    const result = validationResult(req)
 
+    if (!result) {
+      res.status(400).json({ errors: result.array() })
+    }
+
+    const {
+      title,
+      company,
+      location,
+      from,
+      to,
+      current,
+      description
+    } = req.body
+
+    const newExperience = {
+      title,
+      company,
+      location,
+      from,
+      to,
+      current,
+      description
+    }
+
+    try {
+      const profile = await Profile.findOne({ user: req.user.id})
+      profile.experience.unshift(newExperience)
+      await profile.save()
+      res.json(profile)
+    } catch (error) {
+      console.error(error.message)
+      res.status(500).send('Server error')  
+    }
+  }
+)
 
 export default router
