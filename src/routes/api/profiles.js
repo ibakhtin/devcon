@@ -1,5 +1,7 @@
+import config from 'config'
 import express from 'express'
 import { check, validationResult } from 'express-validator'
+import request from 'request'
 
 import auth from '../../middleware/auth'
 import Profile from '../../models/Profile'
@@ -207,7 +209,7 @@ router.put(
       res.json(profile)
     } catch (error) {
       console.error(error.message)
-      res.status(500).send('Server error')  
+      res.status(500).send('Server error')
     }
   }
 )
@@ -234,7 +236,7 @@ router.delete(
       res.json(profile)
     } catch (error) {
       console.error(error.message)
-      res.status(500).send('Server error')        
+      res.status(500).send('Server error')
     }
   }
 )
@@ -287,7 +289,7 @@ router.put(
       res.json(profile)
     } catch (error) {
       console.error(error.message)
-      res.status(500).send('Server error')  
+      res.status(500).send('Server error')
     }
   }
 )
@@ -313,7 +315,41 @@ router.delete(
       res.json(profile)
     } catch (error) {
       console.error(error.message)
-      res.status(500).send('Server error')        
+      res.status(500).send('Server error')
+    }
+  }
+)
+
+// @route GET api/profiles/github/:username
+// @desc Get user repos from GitHub
+// @access Public
+router.get(
+  '/github/:username',
+  async (req, res) => {
+    try {
+      const options = {
+        uri: `https://api.github.com/users/${req.params.username}/repos?per_page=5&sort=created:asc&client_id=${config.get('githubClientId')}&client_secret=${config.get('githubClientSecret')}`,
+        method: 'GET',
+        headers: { 'user-agent': 'node.js' }
+      }
+
+      console.log(options)
+
+      request(options, (error, response, body) => {
+        if (error) {
+          console.log(error)
+        }
+
+        if (response.statusCode !== 200) {
+          res.status(404).json({ msg: 'GitHub user not found' })
+          return
+        }
+
+        res.json(JSON.parse(body))
+      })
+    } catch (error) {
+      console.error(error.message)
+      res.status(500).send('Server error')
     }
   }
 )
