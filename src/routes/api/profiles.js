@@ -1,11 +1,12 @@
 import config from 'config'
 import express from 'express'
-import { check, validationResult } from 'express-validator'
+import { validationResult } from 'express-validator'
 import request from 'request'
 
 import auth from '../../middleware/auth'
 import Profile from '../../models/Profile'
 import User from '../../models/User'
+import { profileValidator, experienceValidator, educationValidator } from '../../validators';
 
 const router = express.Router()
 
@@ -38,10 +39,7 @@ router.post(
   '/',
   [
     auth,
-    [
-      check('status', 'Status is required').not().isEmpty(),
-      check('skills', 'Skills is required').not().isEmpty()
-    ]
+    profileValidator
   ],
   async (req, res) => {
     const result = validationResult(req)
@@ -169,11 +167,7 @@ router.put(
   '/experience',
   [
     auth, 
-    [
-      check('title', 'Title is required').not().isEmpty(),
-      check('company', 'Company is required').not().isEmpty(),
-      check('from', 'From date is required').not().isEmpty()
-    ]
+    experienceValidator
   ],
   async (req, res) => {
     const result = validationResult(req)
@@ -247,13 +241,8 @@ router.delete(
 router.put(
   '/education',
   [
-    auth, 
-    [
-      check('school', 'School is required').not().isEmpty(),
-      check('degree', 'Degree is required').not().isEmpty(),
-      check('fieldofstudy', 'Field of study is required').not().isEmpty(),
-      check('from', 'From date is required').not().isEmpty()
-    ]
+    auth,
+    educationValidator
   ],
   async (req, res) => {
     const result = validationResult(req)
