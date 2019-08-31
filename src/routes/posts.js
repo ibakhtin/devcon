@@ -1,10 +1,10 @@
 import express from 'express'
 import { validationResult } from 'express-validator'
 
-import auth from '../../middleware/auth'
-import postValidator from '../../validators/postValidator';
-import User from '../../models/User';
-import Post from '../../models/Post';
+import auth from '../middleware/auth'
+import Post from '../models/Post';
+import User from '../models/User';
+import postValidator from '../validators/postValidator';
 
 const router = express.Router();
 

@@ -3,10 +3,10 @@ import express from 'express'
 import { validationResult } from 'express-validator'
 import request from 'request'
 
-import auth from '../../middleware/auth'
-import Profile from '../../models/Profile'
-import User from '../../models/User'
-import { profileValidator, experienceValidator, educationValidator } from '../../validators';
+import auth from '../middleware/auth'
+import Profile from '../models/Profile'
+import User from '../models/User'
+import { profileValidator, experienceValidator, educationValidator } from '../validators';
 
 const router = express.Router()
 
