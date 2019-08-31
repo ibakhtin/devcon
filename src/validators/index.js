@@ -1,15 +1,7 @@
-import educationValidator from './educationValidator'
-import experienceValidator from './experienceValidator'
-import postValidator from './postValidator'
-import profileValidator from './profileValidator'
-import userValidator from './userSignInValidator'
-import userSignInValidator from 'userSignInValidator'
-import userSignUpValidator from 'userSignUpValidator'
-
-export const educationValidator
-export const experienceValidator
-export const postValidator
-export const profileValidator
-export const userValidator
-export const userSignInValidator
-export const userSignUpValidator
+export { educationValidator } from './educationValidator'
+export { experienceValidator } from './experienceValidator'
+export { postValidator } from './postValidator'
+export { profileValidator } from './profileValidator'
+export { userValidator } from './userSignInValidator'
+export { userSignInValidator } from './userSignInValidator'
+export { userSignUpValidator } from './userSignUpValidator'

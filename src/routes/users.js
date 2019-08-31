@@ -10,6 +10,8 @@ import { userSignInValidator, userSignUpValidator } from '../validators';
 
 const router = express.Router()
 
+
+
 // @route POST api/users/signup
 // @desc Sign up user
 // @access Public

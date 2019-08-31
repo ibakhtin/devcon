@@ -4,7 +4,7 @@ import { validationResult } from 'express-validator'
 import auth from '../middleware/auth'
 import Post from '../models/Post';
 import User from '../models/User';
-import postValidator from '../validators/postValidator';
+import { postValidator } from '../validators';
 
 const router = express.Router();
 
