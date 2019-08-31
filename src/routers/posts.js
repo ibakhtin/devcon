@@ -1,47 +1,14 @@
-import express from 'express'
-import { validationResult } from 'express-validator'
+import { Router } from 'express'
 
 import auth from '../middleware/auth'
-import Post from '../models/Post';
-import User from '../models/User';
 import { postValidator } from '../validators';
+import { createPost } from '../controllers/posts';
 
-const postsRouter = express.Router();
+const postsRouter = Router();
 
 // @route POST api/posts
 // @desc Create post
 // @access Private
-router.post(
-  '/',
-  [auth, postValidator],
-  async (req, res) => {
-    const result = validationResult(req)
-
-    if (!result.isEmpty()) {
-      res.status(400).json({ errors: result.array() })
-      return
-    }
-
-    try {
-      const user = await User.findById(req.user.id).select('-password')
-  
-      const post = {
-        text: req.body.text,
-        name: user.name,
-        avatar: user.avatar,
-        user: req.user.id,
-      }
-
-      post = new Post(post)
-
-      await post.save()
-
-      res.json({ post })
-    } catch (error) {
-      console.error(error.message)
-      res.status(500).send('Server error')
-    }
-  }
-)
+postsRouter.post('/', [auth, postValidator], createPost)
 
 export { postsRouter }
