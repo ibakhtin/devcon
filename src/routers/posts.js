@@ -6,7 +6,7 @@ import Post from '../models/Post';
 import User from '../models/User';
 import { postValidator } from '../validators';
 
-const router = express.Router();
+const postsRouter = express.Router();
 
 // @route POST api/posts
 // @desc Create post
@@ -44,4 +44,4 @@ router.post(
   }
 )
 
-export default router
+export { postsRouter }

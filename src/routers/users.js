@@ -8,9 +8,7 @@ import config from 'config'
 import User from '../models/User'
 import { userSignInValidator, userSignUpValidator } from '../validators';
 
-const router = express.Router()
-
-
+const usersRouter = express.Router()
 
 // @route POST api/users/signup
 // @desc Sign up user
@@ -116,4 +114,4 @@ router.post(
   }
 )
 
-export default router
+export { usersRouter }

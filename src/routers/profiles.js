@@ -8,7 +8,7 @@ import Profile from '../models/Profile'
 import User from '../models/User'
 import { profileValidator, experienceValidator, educationValidator } from '../validators';
 
-const router = express.Router()
+const profilesRouter = express.Router()
 
 // @route GET api/profile/me
 // @desc Get current users profile
@@ -343,4 +343,4 @@ router.get(
   }
 )
 
-export default router
+export { profilesRouter }
