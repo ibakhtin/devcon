@@ -2,13 +2,13 @@ import { Router } from 'express'
 
 import auth from '../middleware/auth'
 import { postValidator } from '../validators';
-import { createPost } from '../controllers/posts';
+import { postsService } from '../controllers';
 
 const postsRouter = Router();
 
 // @route POST api/posts
 // @desc Create post
 // @access Private
-postsRouter.post('/', [auth, postValidator], createPost)
+postsRouter.post('/', [auth, postValidator], postsService.createPost)
 
 export { postsRouter }
