@@ -1,22 +1,24 @@
 import Post from "../../models/Post";
 
-export const removePost = async (req, res) => {
+export const likePost = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id)
 
-    if(!post) {
+    if (!post) {
       res.status(404).json({ msg: 'Post not found' })
       return
     }
 
-    if (post.user.toString() !== req.user.id) {
-      res.status(401).json({ msg: 'User not authorized' })
+    if (post.likes.find(like => like.user.toString() === req.user.id)) {
+      res.status(400).json({ msg: 'Post already liked' })
       return
     }
 
-    await post.remove()
+    post.likes.unshift({ user: req.user.id })
 
-    res.json({ msg: 'Post removed' })
+    await post.save()
+
+    res.json(post.likes)
   } catch (error) {
     console.error(error.message)
     

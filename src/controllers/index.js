@@ -1,2 +1,2 @@
-import * as postsService from './posts'
-export { postsService }
+import * as postsControllers from './posts'
+export { postsControllers }
