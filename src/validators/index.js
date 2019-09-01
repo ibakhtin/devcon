@@ -1,3 +1,4 @@
+export * from './commentValidator'
 export * from './educationValidator'
 export * from './experienceValidator'
 export * from './postValidator'

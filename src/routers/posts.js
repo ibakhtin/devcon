@@ -2,38 +2,33 @@ import { Router } from 'express'
 
 import auth from '../middleware/auth'
 import { postValidator } from '../validators';
+import { commentValidator } from '../validators';
 import { postsControllers } from '../controllers';
 
-const postsRouter = Router();
+const router = Router();
 
-// @route POST api/posts
-// @desc Create post
-// @access Private
-postsRouter.post('/', [auth, postValidator], postsControllers.createPost)
+// POST request to create post
+router.post('/', [auth, postValidator], postsControllers.createPost)
 
-// @route GET api/posts
-// @desc Get all posts
-// @access Private
-postsRouter.get('/', auth, postsControllers.getAllPosts)
+// GET request to get all books
+router.get('/', auth, postsControllers.getAllPosts)
 
-// @route GET api/posts/:id
-// @desc Get post by id
-// @access Private
-postsRouter.get('/:id', auth, postsControllers.getPostById)
+// GET request to get post by id
+router.get('/:id', auth, postsControllers.getPostById)
 
-// @route DELETE api/posts/:id
-// @desc Remove a post
-// @access Private
-postsRouter.delete('/:id', auth, postsControllers.removePost)
+// DELETE request to remove post
+router.delete('/:id', auth, postsControllers.removePost)
 
-// @route PUT api/posts/like/:id
-// @desc Like a post
-// @access Private
-postsRouter.put('/like/:id', auth, postsControllers.likePost)
+// PUT request to like comment
+router.put('/:id/like', auth, postsControllers.likePost)
 
-// @route PUT api/posts/unlike/:id
-// @desc Unlike a post
-// @access Private
-postsRouter.put('/unlike/:id', auth, postsControllers.unlikePost)
+// Private PUT request to unlike post
+router.put('/:id/unlike', auth, postsControllers.unlikePost)
 
-export { postsRouter }
+// Private POST request to create comment
+router.post('/:post_id/comments', [auth, commentValidator], postsControllers.createComment)
+
+// Private DELETE request to remove comment
+router.delete('/:post_id/comments/:comment_id', auth, postsControllers.removeComment)
+
+export { router as postsRouter }
