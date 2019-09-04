@@ -8,7 +8,9 @@
   "scripts": {
     "build": "npx babel src --out-dir dist",
     "start": "npx babel-node src/index.js",
-    "serve": "nodemon --delay 5 --watch src --exec babel-node src/index.js"
+    "server": "nodemon --delay 5 --watch src --exec babel-node src/index.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently 'yarn run server' 'yarn run client'"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

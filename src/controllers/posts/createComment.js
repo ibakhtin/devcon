@@ -6,7 +6,7 @@ import User from '../../models/User';
 export const createComment = async (req, res) => {
   try {
     const result = validationResult(req)
-  
+
     if (!result.isEmpty()) {
       res.status(400).json({ errors: result.array() })
       return
