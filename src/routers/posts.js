@@ -1,25 +1,24 @@
 import { Router } from 'express'
 
 import auth from '../middleware/auth'
-import { postValidator } from '../validators';
-import { commentValidator } from '../validators';
+import { commentValidator, postValidator } from '../validators';
 import { postsControllers } from '../controllers';
 
 const router = Router();
 
-// POST request to create post
+// Private POST request to create post
 router.post('/', [auth, postValidator], postsControllers.createPost)
 
-// GET request to get all books
+// Private GET request to get all books
 router.get('/', auth, postsControllers.getAllPosts)
 
-// GET request to get post by id
+// Private GET request to get post by id
 router.get('/:id', auth, postsControllers.getPostById)
 
-// DELETE request to remove post
+// Private DELETE request to remove post
 router.delete('/:id', auth, postsControllers.removePost)
 
-// PUT request to like comment
+// Private PUT request to like comment
 router.put('/:id/like', auth, postsControllers.likePost)
 
 // Private PUT request to unlike post

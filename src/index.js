@@ -4,7 +4,7 @@ import connectDatabase from './utils/connectDatabase'
 
 import { postsRouter } from './routers/posts'
 import { profilesRouter } from './routers/profiles'
-import { usersRouter } from './routers/users'
+import { usersRouter } from './services/users/router'
 
 const app = express()
 
