@@ -3,7 +3,7 @@ import { validationResult } from 'express-validator'
 import Post from '../../models/Post';
 import User from '../../models/User';
 
-export const removeComment = async (req, res) => {
+export const removeCommentController = async (req, res) => {
   try {
     const post = await Post.findById(req.params.post_id)
 

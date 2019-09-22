@@ -2,9 +2,9 @@ import express from 'express'
 
 import connectDatabase from './utils/connectDatabase'
 
-import { postsRouter } from './routers/posts'
+import { postsRouter } from './services/posts/router.posts'
 import { profilesRouter } from './routers/profiles'
-import { usersRouter } from './services/users/router'
+import { usersRouter } from './services/users/router.users'
 
 const app = express()
 

@@ -1,2 +1,2 @@
-export * from './posts'
+export * from '../services/posts/router.posts'
 export * from './profiles'

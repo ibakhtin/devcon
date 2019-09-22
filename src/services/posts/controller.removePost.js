@@ -1,6 +1,6 @@
 import Post from "../../models/Post";
 
-export const removePost = async (req, res) => {
+export const removePostController = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id)
 

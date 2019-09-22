@@ -1,7 +1,3 @@
-export * from './commentValidator'
 export * from './educationValidator'
 export * from './experienceValidator'
-export * from './postValidator'
 export * from './profileValidator'
-export * from '../services/users/validator.signInUser'
-export * from '../services/users/validator.signUpUser'

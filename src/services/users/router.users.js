@@ -1,9 +1,10 @@
 import { Router } from 'express'
 
-import { signInUserValidator } from './validator.signInUser'
-import { signUpUserValidator } from './validator.signUpUser'
 import { signInUserController } from './controller.signInUser'
 import { signUpUserController } from './controller.signUpUser'
+
+import { signInUserValidator } from './validator.signInUser'
+import { signUpUserValidator } from './validator.signUpUser'
 
 const usersRouter = Router()
 

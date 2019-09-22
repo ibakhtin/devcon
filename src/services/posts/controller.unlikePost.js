@@ -1,6 +1,6 @@
 import Post from "../../models/Post";
 
-export const likePost = async (req, res) => {
+export const unlikePostController = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id)
 
@@ -9,12 +9,12 @@ export const likePost = async (req, res) => {
       return
     }
 
-    if (post.likes.find(like => like.user.toString() === req.user.id)) {
-      res.status(400).json({ msg: 'Post already liked' })
+    if (!post.likes.find(like => like.user.toString() === req.user.id)) {
+      res.status(400).json({ msg: 'Post has not yet been liked' })
       return
     }
 
-    post.likes.unshift({ user: req.user.id })
+    post.likes = post.likes.filter(like => like.user.toString() !== req.user.id)
 
     await post.save()
 
