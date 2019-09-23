@@ -1,7 +1,7 @@
 import { validationResult } from 'express-validator'
 
-import Post from '../../models/Post';
-import User from '../../models/User';
+import { Post } from '../../models/Post';
+import { User } from '../../models/User';
 
 export const createPostController = async (req, res) => {
   try {

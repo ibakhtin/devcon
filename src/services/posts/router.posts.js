@@ -1,8 +1,6 @@
 import { Router } from 'express'
 
 import auth from '../../middleware/auth'
-import { commentValidator } from './validator.comment'
-import { postValidator } from './validator.post'
 
 import { createCommentController } from './controller.createComment'
 import { createPostController } from './controller.createPost'
@@ -12,6 +10,9 @@ import { removePostController } from './controller.removePost'
 import { likePostController } from './controller.likePost'
 import { removeCommentController } from './controller.removeComment'
 import { unlikePostController } from './controller.unlikePost'
+
+import { commentValidator } from './validator.comment'
+import { postValidator } from './validator.post'
 
 const postsRouter = Router();
 
@@ -35,7 +36,6 @@ postsRouter.put('/:id/like', auth, likePostController)
 
 // Private PUT request to unlike post
 postsRouter.put('/:id/unlike', auth, unlikePostController)
-
 
 // Private DELETE request to remove comment
 postsRouter.delete('/:post_id/comments/:comment_id', auth, removeCommentController)

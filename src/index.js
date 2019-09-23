@@ -3,7 +3,7 @@ import express from 'express'
 import connectDatabase from './utils/connectDatabase'
 
 import { postsRouter } from './services/posts/router.posts'
-import { profilesRouter } from './routers/profiles'
+import { profilesRouter } from './services/profiles'
 import { usersRouter } from './services/users/router.users'
 
 const app = express()

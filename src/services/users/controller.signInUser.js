@@ -3,7 +3,7 @@ import config from 'config'
 import { validationResult } from 'express-validator'
 import jwt from 'jsonwebtoken'
 
-import User from '../../models/User'
+import { User } from '../../models/User'
 
 export async function signInUserController(req, res) {    
   try {

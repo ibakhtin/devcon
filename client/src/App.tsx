@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stack, FontWeights } from 'office-ui-fabric-react';
+import { Stack } from 'office-ui-fabric-react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Navbar from './components/layouts/Navbar';
@@ -7,7 +7,7 @@ import Landing from './components/layouts/Landing';
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
 
-const boldStyle = { root: { fontWeight: FontWeights.semibold } };
+// const boldStyle = { root: { fontWeight: FontWeights.semibold } };
 
 export const App: React.FunctionComponent = () => (
   <Router>

@@ -1,4 +1,4 @@
-import Post from "../../models/Post";
+import { Post } from "../../models/Post";
 
 export const likePostController = async (req, res) => {
   try {
