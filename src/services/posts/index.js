@@ -2,17 +2,17 @@ import { Router } from 'express'
 
 import auth from '../../middleware/auth'
 
-import { createCommentController } from './controller.createComment'
-import { createPostController } from './controller.createPost'
-import { getAllPostsController } from './controller.getAllPosts'
-import { getPostByIdController } from './controller.getPostById'
-import { removePostController } from './controller.removePost'
-import { likePostController } from './controller.likePost'
-import { removeCommentController } from './controller.removeComment'
-import { unlikePostController } from './controller.unlikePost'
+import { createCommentController } from './controllers/createComment'
+import { createPostController } from './controllers/createPost'
+import { getAllPostsController } from './controllers/getAllPosts'
+import { getPostByIdController } from './controllers/getPostById'
+import { removePostController } from './controllers/removePost'
+import { likePostController } from './controllers/likePost'
+import { removeCommentController } from './controllers/removeComment'
+import { unlikePostController } from './controllers/unlikePost'
 
-import { commentValidator } from './validator.comment'
-import { postValidator } from './validator.post'
+import { commentValidator } from './validators/comment'
+import { postValidator } from './validators/post'
 
 const postsRouter = Router();
 

@@ -4,7 +4,7 @@ import { validationResult } from 'express-validator'
 import gravatar from 'gravatar'
 import jwt from 'jsonwebtoken'
 
-import { User } from '../../models/User'
+import { User } from '../../../models/User'
 
 export async function signUpUserController(req, res) {
   try {
